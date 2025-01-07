@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Web Service</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -13,7 +14,13 @@
 
     <form id="myForm" action="/api" method="GET">
         <input type="float" id="num1" name="num1" placeholder="Enter a number" /><br>
-        <input type="float" id="num2" name="num2" placeholder="Enter another number" /><br><br>
+        <input type="float" id="num2" name="num2" placeholder="Enter another number" /><br>
+        <select name="operation" id="operation">
+            <option value="+">Addition (+)</option>
+            <option value="-">Subtraction (-)</option>
+            <option value="*">Multiplication (*)</option>
+            <option value="/">Division (/)</option>
+        </select><br><br>
         <button type="submit">Submit</button>
     </form>
 
@@ -31,9 +38,10 @@
             // Retrieve the values from the form
             const num1 = parseFloat(document.getElementById('num1').value);
             const num2 = parseFloat(document.getElementById('num2').value);
+            const op = document.getElementById('operation').value;
 
             // Build the URL with the values
-            const url = `/api/add?num1=${num1}&num2=${num2}`;
+            const url = `/api/main?num1=${num1}&num2=${num2}&op=${op}`;
 
             // Make the fetch request to the endpoint
             fetch(url)
